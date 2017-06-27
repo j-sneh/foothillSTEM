@@ -1,7 +1,8 @@
 package JTSprograms; // adds class to the program's package (if any new methods are created, may be usable by other classes.)
+
 public class HelloWorld { // class begins
 
-	public static void main(String[] args) { // main begins
+	public static void main(String[] args) throws Exception { // main begins
 		// code only runs in main method.
 		String name,position,location,website;
 		name = "Jonathan Sneh \n";
@@ -38,28 +39,60 @@ public class HelloWorld { // class begins
 			System.out.println(":|");
 		} 
 		
+		String month = "February";
+		int date = 28;
+		int year = 2017;
+		System.out.println(month + " " + date +", " + year);
+		if (month.equalsIgnoreCase("february")&& date > 29){
+			throw new Exception();
+		}
+		
+		if (year == 2017){
+			System.out.println("Present!");
+		} else if (year > 2017){
+			System.out.println("Future!");
+		} else {
+			System.out.println("Past");
+		}
+		
+		if (month.equalsIgnoreCase("June")||month.equalsIgnoreCase("July") || month.equalsIgnoreCase("August")){
+			System.out.println("It's summer!");
+		} else if (month.equalsIgnoreCase("October")){
+			System.out.println("Happy Halloween!");
+		} else {
+			System.out.println("brrr... It's cold");
+		}
+		
+		int i = 0;
+		while (i <= 5){
+			System.out.println(i);
+			i++;
+		}
+		
+		for (int j = 0; j <= 5;j++){
+			System.out.println(j);
+		}
+		for (int j = 10;j>=0;j--){
+			if (j > 0){
+				System.out.println(j);
+			} else{
+				System.out.println("Happy new year!");
+			}
+		}
+		for (int j = 0; j <= 12; j++){
+			System.out.println(j * 4);
+		}
+		double[] arr = new double[] {0,-3,2,18,0,-5,-5.10000};
+		double min = arr[0];
+		for (int j = 0; j < arr.length; j++){
+			System.out.println(arr[j]);
+		}
+		for (int j = 0; j < arr.length-1; j++){
+			if(min > arr[j+1]){
+				min = arr[j+1];
+			}
+		}
+		System.out.println("Minimum is:" + min);
 	}	// main ends
 
 } 
-// class ends
-
-
-
-
-//public class BuggyCode {
-//
-//	public static void main(String[] args) {
-//		String thisCollege = "Foothill College";
-//		String address = 12345 + " El Monte Road"; 
-//		System.out.println(address);
-//		String y = "Los Altos Hills ";
-//		String State = "CA";
-//	
-//	
-//	
-//		System.out.println(thisCollege);
-//		System.out.println("Hello, world!");
-//		System.out.println(y + State + 94022);
-//		
-//	}
-//}
