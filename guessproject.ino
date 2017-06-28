@@ -1,6 +1,6 @@
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
-int guessable = (int) random(1,20);
+int guessable = (int) random(1,10);
 const int greenPin = 8;
 const int redPin = 9;
 const int bluePin = 10;
@@ -40,7 +40,7 @@ void loop() {
 }
 
 void submit(){
-  if (guess < 1 || guess > 20){
+  if (guess < 1 || guess > 10){
     guess = 0;
     return;
   } else if (guess == guessable){
