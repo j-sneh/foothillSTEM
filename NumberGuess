@@ -1,0 +1,42 @@
+package JTSprograms;
+import java.util.*;
+public class NumberGuess {
+	public static void main(String args[]) throws InterruptedException{
+		Random r = new Random();
+		Scanner input = new Scanner(System.in);
+		int secret = r.nextInt(10) + 1;
+		int guesses = 3;
+		boolean win = false;
+		while(win == false && guesses > 0){
+			System.out.println("I'm thinking of a number between 1 and 10. You have " +
+					guesses +" guesses");
+			 String precon = input.next();
+			try{
+				int guess = Integer.parseInt(precon);
+				if (guess > 10 || guess < 1){
+					System.err.println("Please input an int between 1 and 10");
+					continue;
+				}
+				if (guess == secret){
+					System.out.println("You win!");
+					input.close();
+					win = true;
+				} else {
+					guesses -= 1;
+					System.out.printf("Incorrect number, you now have %d guesses %n",guesses);
+				}
+			} catch (java.lang.NumberFormatException e){
+				System.err.println("Please input an int between 1 and 10");
+			} finally {
+				Thread.sleep(25);
+			}
+		
+		}
+		if (guesses == 0){
+			System.out.printf("You ran out of guesses... Better luck next time. "
+					+ " %n The number was %d %n", secret);
+		} else if (win == true){
+			System.out.println("You're a number guessing master!");
+		}
+	}
+}
