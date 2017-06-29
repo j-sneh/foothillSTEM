@@ -16,6 +16,7 @@ public class Blackjack {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		String status;
+		int dealerTotal, realdTotal;
 		int draw1 = draw();
 		int draw2 = draw();
 		int total = draw1 + draw2;
@@ -23,8 +24,8 @@ public class Blackjack {
 		
 		System.out.printf("You drew a %d and a %d %n",draw1,draw2);
 		System.out.println("Your total is " + total);
-		int dealerTotal = draw();
-		int realdTotal = dealerTotal + draw();
+		dealerTotal = draw();
+		realdTotal = dealerTotal + draw();
 		System.out.println("\nThe dealer has two cards, one showing, one hidden."
 				+ " The showing one has a value of " + dealerTotal);
 		boolean dealerWin = false;
@@ -48,16 +49,24 @@ public class Blackjack {
 			}
 			int dealerHit = dealerAI(realdTotal);
 			if (status.equalsIgnoreCase("stay")){
-				while(dealerHit != 0){
+				while(dealerHit != 0 && realdTotal < 21){
 					dealerTotal += dealerHit;
 					realdTotal += dealerHit;
+					System.out.printf("The dealer hits, he gets a %d %n",dealerHit);
 					System.out.printf("The dealer's visible total is %d %n", dealerTotal);
 					dealerHit = dealerAI(realdTotal);
+				}
+				System.out.printf("You reveal your cards, you have a total of %d %n",total);
+				System.out.printf("The dealer reveals his secret card it was a %d, his total is now %d %n",(realdTotal-dealerTotal),realdTotal );
+				if (realdTotal >= total){
+					dealerWin = true;
+				} else {
+					playerWin = true;
 				}
 			}
 		}
 		if (dealerWin){
-			System.out.printf("The dealer won! He had a total of %d. %n",total);
+			System.out.println("The dealer won... better luck next time.");
 		} else {
 			System.out.println("You won!");
 		}
